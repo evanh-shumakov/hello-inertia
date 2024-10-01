@@ -7,7 +7,7 @@
         {% endblock %}
         {{ inertiaHead(page) }}
     </head>
-    <body>
+    <body class="min-h-screen flex flex-col items-center justify-center">
         {{ inertia(page) }}
         {% block javascripts %}
             {{ vite_entry_script_tags('app') }}

@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WelcomeController extends AbstractController
 {
-    #[Route('/', name: 'welcome', methods: ['GET'])]
+    #[Route('/welcome', name: 'welcome', methods: ['GET'])]
     public function welcome(): Response
     {
         $version = Kernel::VERSION;
