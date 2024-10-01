@@ -1,85 +1,54 @@
-# Symfony + Vite + Inertia + Vuejs 3
+# Noir Pizza — A Noir-Style Pizzeria
 
-This is a template for Symfony project with Inertia and Vuejs that uses Vite instead of Webpack
+## Description
+Noir Pizza is a minimalist pizzeria website in noir style, built with Symfony, Inertia.js, Vite, Vue.js, and Tailwind CSS. As a study task for Intaro Incubator project.
 
-## Using this template
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/evanh-shumakov/hello-inertia.git
+   ```
+   ```bash
+   cd hello-inertia
+   ```
 
-Follow this instruction in creating new repo from this template
-https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+2. Install dependencies:
+   ```bash
+   composer install
+   ```
+   ```bash
+   npm install
+   ```
 
-## Requirements
+3. Configure the `.env` file for database connection:
+   ```bash
+   cp .env.example .env
+   ```
+   ![img.png](img.png)
+   It's supposed you use database of your choice, and you set it by yourself. 
 
-- PHP 8
-- Composer
-- Symfony CLI
-- Node
-- NPM
 
-## Installation and Running
+4. Run database migrations:
+   ```bash
+   php bin/console doctrine:migrations:migrate
+   ```
 
-Before you do the steps, make sure you are installed PHP8, Symfony, Composer, NodeJs and NPM.
+5. Seed the database:
+   ```bash
+   php bin/console doctrine:fixtures:load
+   ```
 
-1. Install PHP Packages using Composer
-```shell
-composer install
-```
-
-2. Next install your node packages using npm
-```shell
-npm install
-```
-
-3. Run symfony server for backend
-```shell
-symfony server:start
-```
-
-4. Run node server for frontend dev env
-```shell
-npm run dev
-```
-
-5. Access http://localhost:8000 in your browser
-
-You would see the modified vue version of symfony welcome
-
-![Symfony Inertia and Vue welcome](./public/images/symfony-vite-inertia-vue.png)
-
-### Using Docker
-
-If you are familiar with Docker container, you can run the application using it.
-
-1. Change the `docker-compose.yml` if necessary like ports mapping to your host
-2. Run docker compose
-```shell
-docker-compose up -d
-```
-3. Access http://localhost:8000 in your browser
-
-As default it will map the port of the php to 8000 and inertia node to 13714
-
-## Intertia / Vue Directory
-
-The pages directory is located in `assets/`
-
-- **pages** will be the template that you can use to render in your controller
-
-## SSR
-
-To change this configuration just change your .env files variables
-
-| env                    | description     | type    | default                    |
-|------------------------|-----------------|---------|----------------------------|
-| APP_INERTIA_SSR_ENABLE | Enables the ssr | boolean | true                       |
-| APP_INERTIA_SSR_URL    | The ssr url     | string  | http://node:13714/render   |
-
-The default for the url is the container of docker setup.
-
-This ssr configuration is following the ssr support of Inertia https://inertiajs.com/server-side-rendering
-
-## References
-
-- [Symfony](https://symfony.com/)
-- [Symfony Inertia Bundle](https://github.com/rompetomp/inertia-bundle)
-- [Symfony Vite Bundle](https://github.com/lhapaipai/vite-bundle)
-- [Inertia Js](https://inertiajs.com/)
+6. Build the frontend assets:
+   ```bash
+   npm run dev
+   ```
+   
+7. Start the local server:
+    ```bash
+   symfony server:start
+   ```
+   
+8. Open the website in a browser:
+    ```
+    http://localhost:8000
+    ```
