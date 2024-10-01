@@ -14,7 +14,7 @@ class PizzaController extends AbstractController
     {
         $pizzas = $em->getRepository(Pizza::class)->findAll();
 
-        return $this->inertia->render('pizza/foo', [
+        return $this->inertia->render('pizza/list', [
             'pizzas' => $pizzas,
         ]);
     }
