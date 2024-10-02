@@ -9,24 +9,24 @@
 </template>
 
 <script>
-import {cartService} from "../services/CartService";
+  import {cartService} from "../services/CartService";
 
-export default {
-  computed: {
-    isCartEmpty() {
-      return ! this.items.length > 0;
+  export default {
+    computed: {
+      isCartEmpty() {
+        return ! this.items.length > 0;
+      },
+      items() {
+        return cartService.getItems();
+      },
+      totalPrice() {
+        return cartService.getTotalPrice();
+      }
     },
-    items() {
-      return cartService.getItems();
-    },
-    totalPrice() {
-      return cartService.getTotalPrice();
+    methods: {
+      clearCart() {
+        cartService.clearCart();
+      },
     }
-  },
-  methods: {
-    clearCart() {
-      cartService.clearCart();
-    },
   }
-}
 </script>
