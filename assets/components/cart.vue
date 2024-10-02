@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-4xl mt-12 mb-12">
+  <section class="w-full max-w-4xl mt-12 mb-12 sticky top-0">
     <div class="bg-gray-900 p-6 rounded-lg shadow-md">
       <p v-if="! items.length" class="text-gray-400">В корзине пусто.</p>
       <p v-if="items.length > 0" class="text-gray-200">В корзине {{ items.length }} товаров на общую сумму ₽{{ totalPrice }}</p>
