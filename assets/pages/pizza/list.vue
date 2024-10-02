@@ -10,7 +10,7 @@
     <h2 class="text-2xl text-gray-200 mb-6">Наше меню</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <div v-for="pizza in pizzas" class="p-6 bg-gray-800 rounded-lg shadow-md">
-        <img v-bind:src="pizza.image">
+        <img v-bind:src="pizza.image" :alt="pizza.name">
         <h3 class="text-lg font-semibold text-white mt-2">{{ pizza.name }}</h3>
         <p class="text-gray-400 mt-2">{{ pizza.description }}</p>
         <p class="text-gray-300 font-semibold mt-4">₽{{ pizza.price }}</p>
