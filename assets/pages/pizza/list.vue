@@ -14,7 +14,7 @@
         <h3 class="text-lg font-semibold text-white mt-2">{{ pizza.name }}</h3>
         <p class="text-gray-400 mt-2">{{ pizza.description }}</p>
         <p class="text-gray-300 font-semibold mt-4">₽{{ pizza.price }}</p>
-        <button class="mt-4 w-full bg-gray-700 text-white py-2 rounded hover:bg-gray-600">В корзину</button>
+        <button @click="addToCart(pizza)" class="mt-4 w-full bg-gray-700 text-white py-2 rounded hover:bg-gray-600">В корзину</button>
       </div>
     </div>
   </section>
@@ -25,17 +25,29 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      pizzas: Array,
+import Cart from './../../components/cart.vue';
+import {cartService} from "../../services/CartService";
+
+export default {
+  props: {
+    pizzas: Array,
+  },
+  methods: {
+    /** @property {CartItem} pizza */
+    addToCart(pizza) {
+      cartService.addItem(pizza);
     },
-  }
+  },
+  components: {
+    'cart': Cart,
+  },
+}
 </script>
 
 <style>
-  body {
-    background-color: #1b1b1b;
-    color: #e5e5e5;
-    font-family: 'Arial', sans-serif;
-  }
+body {
+  background-color: #1b1b1b;
+  color: #e5e5e5;
+  font-family: 'Arial', sans-serif;
+}
 </style>
