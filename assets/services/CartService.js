@@ -39,6 +39,7 @@ class CartService {
 
     clearCart() {
         this._items.length = 0;
+        localStorage.removeItem(this._key);
     }
 
     /**
