@@ -6,7 +6,13 @@
         В корзине {{ items.length }} {{ getProductCorrectGrammaticalNumber(items.length) }}
         на общую сумму ₽{{ totalPrice }}
       </p>
-      <button v-if="! isCartEmpty" @click="clearCart" class="mt-4 w-full bg-red-600 text-white py-2 rounded hover:bg-red-500">Перейти к оформлению</button>
+      <button
+          v-if="! isCartEmpty"
+          @click="clearCart"
+          class="mt-4 w-full bg-red-600 text-white py-2 rounded hover:bg-red-500"
+      >
+        Перейти к оформлению
+      </button>
     </div>
   </section>
 </template>
@@ -16,15 +22,17 @@
 
   export default {
     computed: {
+      /** @return {boolean} */
       isCartEmpty() {
         return ! this.items.length > 0;
       },
       items() {
         return cartService.getItems();
       },
+      /** @return {StandardLonghandProperties.float} */
       totalPrice() {
         return cartService.getTotalPrice();
-      }
+      },
     },
     methods: {
       clearCart() {
