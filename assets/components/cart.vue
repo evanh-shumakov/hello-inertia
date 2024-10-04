@@ -3,7 +3,7 @@
     <div class="bg-gray-900 p-6 rounded-lg shadow-md">
       <p v-if="isCartEmpty" class="text-gray-400">В корзине пусто.</p>
       <p v-if="! isCartEmpty" class="text-gray-200">
-        В корзине {{ items.length }} {{ getProductCorrectGrammaticalNumber(items.length) }}
+        В корзине {{ items.length }} {{ itemNoun }}
         на общую сумму ₽{{ totalPrice }}
       </p>
       <button
@@ -33,18 +33,15 @@
       totalPrice() {
         return cartService.getTotalPrice();
       },
+      /** @return {string} */
+      itemNoun() {
+        const rule = new Intl.PluralRules('ru-RU').select(this.items.length);
+        return {one: 'товар', few: 'товара', many: 'товаров'}[rule];
+      }
     },
     methods: {
       clearCart() {
         cartService.clearCart();
-      },
-      /**
-       * @param {number} number
-       * @return {string}
-       */
-      getProductCorrectGrammaticalNumber(number) {
-        const rule = new Intl.PluralRules('ru-RU').select(number);
-        return {one: 'товар', few: 'товара', many: 'товаров'}[rule];
       },
     }
   }
